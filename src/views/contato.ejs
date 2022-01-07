@@ -1,0 +1,58 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 my-5">
+            <% let valueContato = 'Criar contato'
+            if(contato._id) { 
+                valueContato = 'Editar contato' 
+            } else {
+                valueContato = 'Criar contato'
+            }
+            %> 
+            <h1 class="text-center"><%= valueContato %></h1>
+            <p class="text-center lead">Crie ou edite os contatos abaixo</p>
+
+            <%- include('includes/messages')  %> 
+
+            <div class="col-lg border border-dark border-2 rounded p-3 m-2">
+                <% if(contato._id) { %> 
+                <form action="/contato/edit/<%= contato._id %> " method="POST">
+                <% } else { %> 
+                <form action="/contato/register" method="POST">
+                <% } %> 
+                    <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                    <div class="mb-3">
+                      <input value="<%= contato.nome %>" type="text" class="form-control" name="nome" placeholder="Nome">
+                    </div>
+    
+                    <div class="mb-3">
+                        <input value="<%= contato.sobrenome %>" type="text" class="form-control" name="sobrenome" placeholder="Sobrenome">
+                    </div>
+    
+                    <div class="mb-3">
+                        <input value="<%= contato.email %>" type="email" class="form-control" name="email" placeholder="Email">
+                    </div>
+    
+                    <div class="mb-3">
+                        <input value="<%= contato.telefone %>" type="tel" class="form-control" name="telefone" placeholder="Telefone">
+                    </div>
+                    
+                    <% if(contato._id) { %> 
+                        <button type="submit" class="btn btn-dark">Editar</button>
+                        <% } else { %> 
+                        <button type="submit" class="btn btn-dark">Registrar</button>
+                        <% } %> 
+                    
+                  </form>
+            </div>
+            
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+<%- include('includes/footer') %>
