@@ -27,9 +27,9 @@ Contato.prototype.valida = function() {
   this.cleanUp()
   
   // Validação email
-  if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('Email inválido.')
-  if(!this.body.nome) this.errors.push('Nome é um campo obrigatório.')
-  if(!this.body.email && !this.body.telefone) this.errors.push('pelo menos um contato precisa ser enviado: email ou telefone.')
+  if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('Email inválido')
+  if(!this.body.nome) this.errors.push('Nome é um campo obrigatório')
+  if(!this.body.email && !this.body.telefone) this.errors.push('Pelo menos um contato precisa ser enviado: email ou telefone')
 }
 
 Contato.prototype.cleanUp = function() {

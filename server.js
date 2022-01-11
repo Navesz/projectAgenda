@@ -4,7 +4,6 @@ const app = express();
 const mongoose = require('mongoose');
 const mongoConnection = process.env.CONNECTIONSTRING
 
-
 mongoose.connect(mongoConnection, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true,
